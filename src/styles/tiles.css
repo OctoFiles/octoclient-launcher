@@ -1,0 +1,204 @@
+/*
+ * Global tile appearance.
+ *
+ * `--tile-tint` / `--tile-strength` are written by the LauncherProvider from the
+ * appearance settings. `--tile-strength` is the real opacity of every content
+ * surface: 0 removes fill, blur, border and shadow of all panels, cards, tiles,
+ * the sidebar/titlebar and the input fields, 100 is the full surface plus the
+ * tile tint.
+ */
+.card,
+.news-card,
+.news-card__body,
+.friends__panel,
+.friends__add,
+.friends__item,
+.friends__bubble,
+.friends__banner,
+.instance-card,
+.instance-tile,
+.content-card,
+.content-entry,
+.content-row,
+.detail-facts,
+.detail-note,
+.detail-search,
+.detail-dropzone,
+.pack-row,
+.profile-card,
+.stat-card,
+.skin-summary,
+.skin-option,
+.skin-file-btn,
+.skin-panel,
+.cosmetic-tile,
+.cosmetic-card,
+.cosmetics-search,
+.cosmetics-sync,
+.cosmetics-more,
+.settings-tabs,
+.settings-section,
+.save-indicator,
+.java-auto,
+.java-auto__version,
+.java-auto__path,
+.path-box,
+.segmented,
+.auth-meta,
+.device-code,
+.empty-state {
+  --tile-alpha: var(--tile-strength, 0);
+  background-image: linear-gradient(
+    150deg,
+    rgba(255, 255, 255, calc(0.18 * var(--tile-alpha))),
+    rgba(255, 255, 255, calc(0.055 * var(--tile-alpha))) 44%,
+    rgba(255, 255, 255, calc(0.095 * var(--tile-alpha)))
+  ) !important;
+  background-color: color-mix(
+    in srgb,
+    var(--tile-tint, transparent) calc(var(--tile-alpha) * 100%),
+    transparent
+  ) !important;
+  border-color: rgba(255, 255, 255, calc(0.19 * var(--tile-alpha))) !important;
+  backdrop-filter: blur(calc(24px * var(--tile-alpha)))
+    saturate(calc(1 + 0.65 * var(--tile-alpha))) !important;
+  -webkit-backdrop-filter: blur(calc(24px * var(--tile-alpha)))
+    saturate(calc(1 + 0.65 * var(--tile-alpha))) !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, calc(0.34 * var(--tile-alpha))),
+    0 26px 60px -36px rgba(0, 0, 0, calc(0.82 * var(--tile-alpha))) !important;
+}
+
+/* The skin preview keeps its own stage gradient, just scaled by the slider. */
+.skins-preview {
+  --tile-alpha: var(--tile-strength, 0);
+  background-image:
+    radial-gradient(
+      ellipse at 50% 16%,
+      color-mix(in srgb, var(--accent) calc(9% * var(--tile-alpha)), transparent),
+      transparent 58%
+    ),
+    radial-gradient(
+      ellipse at 50% 100%,
+      rgba(10, 18, 28, calc(0.9 * var(--tile-alpha))),
+      rgba(2, 4, 8, calc(0.25 * var(--tile-alpha)))
+    ) !important;
+  background-color: transparent !important;
+}
+
+/* Window chrome and sidebar follow the same slider. */
+.titlebar,
+.sidebar {
+  --tile-alpha: var(--tile-strength, 0);
+  background-image: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, calc(0.11 * var(--tile-alpha))),
+    rgba(255, 255, 255, calc(0.025 * var(--tile-alpha)))
+  ) !important;
+  background-color: rgba(8, 16, 28, calc(0.34 * var(--tile-alpha))) !important;
+  border-color: rgba(255, 255, 255, calc(0.16 * var(--tile-alpha))) !important;
+  backdrop-filter: blur(calc(26px * var(--tile-alpha)))
+    saturate(calc(1 + 0.6 * var(--tile-alpha))) !important;
+  -webkit-backdrop-filter: blur(calc(26px * var(--tile-alpha)))
+    saturate(calc(1 + 0.6 * var(--tile-alpha))) !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, calc(0.22 * var(--tile-alpha))) !important;
+}
+
+.account-chip,
+.friends-pill {
+  --tile-alpha: var(--tile-strength, 0);
+  background-image: linear-gradient(
+    150deg,
+    rgba(255, 255, 255, calc(0.14 * var(--tile-alpha))),
+    rgba(255, 255, 255, calc(0.045 * var(--tile-alpha)))
+  ) !important;
+  background-color: rgba(255, 255, 255, calc(0.02 * var(--tile-alpha))) !important;
+  border-color: rgba(255, 255, 255, calc(0.14 * var(--tile-alpha))) !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, calc(0.2 * var(--tile-alpha))) !important;
+}
+
+/* Every input field fades with the tiles as well. */
+.text-input,
+.select__button,
+.select select,
+.search-field,
+.friends__input,
+.skin-source__input,
+.skin-source__input input,
+.detail-search input,
+.cosmetics-search input {
+  --tile-alpha: var(--tile-strength, 0);
+  background-color: rgba(255, 255, 255, calc(0.085 * var(--tile-alpha))) !important;
+  border-color: rgba(255, 255, 255, calc(0.17 * var(--tile-alpha))) !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, calc(0.18 * var(--tile-alpha))) !important;
+}
+
+/* Coloured surfaces keep their meaning, only their opacity follows the slider. */
+.friends__banner {
+  border-color: color-mix(
+    in srgb,
+    var(--danger) calc(46% * var(--tile-alpha)),
+    transparent
+  ) !important;
+  background-color: color-mix(
+    in srgb,
+    var(--danger) calc(14% * var(--tile-alpha)),
+    transparent
+  ) !important;
+}
+
+.detail-note--warn {
+  border-color: rgba(251, 191, 36, calc(0.25 * var(--tile-alpha))) !important;
+  background-color: rgba(251, 191, 36, calc(0.05 * var(--tile-alpha))) !important;
+}
+
+.friends__bubble--mine {
+  border-color: color-mix(
+    in srgb,
+    var(--accent) calc(45% * var(--tile-alpha)),
+    transparent
+  ) !important;
+  background-color: color-mix(
+    in srgb,
+    var(--accent) calc(16% * var(--tile-alpha)),
+    transparent
+  ) !important;
+}
+
+/* Selected items stay recognisable even when the panels are faded out. */
+.friends__item--active {
+  border-color: color-mix(in srgb, var(--accent) 55%, transparent) !important;
+  background-color: color-mix(
+    in srgb,
+    var(--accent) calc(12% * var(--tile-alpha)),
+    transparent
+  ) !important;
+}
+
+.instance-card--active {
+  border-color: color-mix(in srgb, var(--accent) 45%, transparent) !important;
+}
+
+.skin-option--active,
+.cosmetic-card--active {
+  border-color: color-mix(in srgb, var(--accent) 46%, transparent) !important;
+  background-color: color-mix(
+    in srgb,
+    var(--accent) calc(9% * var(--tile-alpha)),
+    transparent
+  ) !important;
+}
+
+/* Active tabs follow the accent colour everywhere (settings, instance preview,
+   cosmetics modal) so a theme change never leaves a stale blue tab behind. */
+.settings-tab--active,
+.segmented__item--active,
+.detail-nav__item--active,
+.content-tab--active,
+.cosmetic-tab--active,
+.cosmetics-nav__item--active,
+.tab--active {
+  color: color-mix(in srgb, var(--accent) 72%, white) !important;
+  background: color-mix(in srgb, var(--accent) 18%, transparent) !important;
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--accent) 38%, transparent) !important;
+}

@@ -1,0 +1,37 @@
+[package]
+name = "octoclient"
+version = "0.1.9"
+description = "OctoClient Launcher"
+authors = ["OctoClient"]
+edition = "2021"
+
+[lib]
+# The `_lib` suffix keeps the library name distinct from the binary name on Windows.
+name = "octoclient_lib"
+crate-type = ["staticlib", "cdylib", "rlib"]
+
+[build-dependencies]
+tauri-build = { version = "2", features = [] }
+
+[dependencies]
+tauri = { version = "2", features = [] }
+tauri-plugin-opener = "2"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+thiserror = "2"
+reqwest = { version = "0.12", default-features = false, features = ["json", "rustls-tls", "multipart"] }
+tokio = { version = "1", features = ["time"] }
+# Without an explicit platform store `keyring` keeps sessions only in memory, so
+# every restart looked like a sign-out. Windows is the supported target.
+keyring = { version = "3", features = ["windows-native"] }
+uuid = { version = "1", features = ["v4"] }
+chrono = { version = "0.4", features = ["serde"] }
+base64 = "0.22"
+sysinfo = "0.33"
+zip = { version = "2", default-features = false, features = ["deflate"] }
+sha1 = "0.10"
+futures = "0.3"
+
+[[bin]]
+name = "octoclient"
+path = "src/main.rs"

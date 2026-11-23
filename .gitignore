@@ -1,0 +1,29 @@
+node_modules/
+dist/
+dist.old/
+src-tauri/target/
+src-tauri/gen/
+_reference/
+*.log
+.DS_Store
+
+# --- Lokale/Tool-Ordner ---
+.cloud-attachments/
+.freebuff/
+.stfolder/
+_tools/
+_tmp_attach/
+
+# --- Python-API ---
+__pycache__/
+*.py[cod]
+*.db
+*.db-shm
+*.db-wal
+
+# --- Große Binär-Downloads ---
+*.zip
+
+# --- OS ---
+Thumbs.db
+desktop.ini
